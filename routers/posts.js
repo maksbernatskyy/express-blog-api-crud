@@ -23,7 +23,16 @@ router.get('/', (req, res) => {
 
 // show
 router.get('/:id', (req, res) => {
+    // Transform to number the id of URL
+    const id = Number(req.params.id)
 
+    // Find the post with the id that be search
+    const specificPost = blog.find((thisPost) => {
+        return thisPost.id === id
+    })
+
+    // Response whit the specific post
+    res.json(specificPost)
 })
 
 module.exports = router
