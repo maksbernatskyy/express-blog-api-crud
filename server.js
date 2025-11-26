@@ -3,14 +3,17 @@ const app = express()
 const PORT = 3000
 const postsRouter = require('./routers/posts')
 
+// Access to folder public
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
     res.send('Server del mio blog')
 })
 
+// Use posts router
 app.use('/posts', postsRouter)
 
+// View in console the port
 app.listen(PORT, () => {
     console.log(`app listening on port: ${PORT}`)
 })
