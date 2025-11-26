@@ -33,6 +33,10 @@ router.get('/:id', (req, res) => {
 
     // Controll if the post exist
     if(!specificPost) {
+        // Change the status
+        res.status(404)
+
+        // Return an error
         return res.json({
             error: 'Not found',
             message: 'Post not find'
