@@ -1,3 +1,4 @@
+// Array of posts
 const blog = require("../data/postsArr");
 
 // Function find
