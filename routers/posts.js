@@ -31,6 +31,14 @@ router.get('/:id', (req, res) => {
         return thisPost.id === id
     })
 
+    // Controll if the post exist
+    if(!specificPost) {
+        return res.json({
+            error: 'Not found',
+            message: 'Post not find'
+        })
+    }
+
     // Response whit the specific post
     res.json(specificPost)
 })
