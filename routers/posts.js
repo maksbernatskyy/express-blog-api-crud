@@ -75,6 +75,9 @@ router.delete("/:id", (req, res) => {
   // Remove the post
   blog.splice(blog.indexOf(specificPost), 1)
 
+  // Show the updated list
+  console.log(blog)
+
   // Response with the status 204
   res.sendStatus(204)
 });
