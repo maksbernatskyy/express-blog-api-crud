@@ -4,6 +4,12 @@ const router = express.Router()
 // List of posts
 const blog = require('../data/postsArr')
 
+function getFind(id) {
+    return blog.find((thisPost) => {
+        return thisPost.id === id
+    })
+}
+
 // index
 router.get('/', (req, res) => {
     // Now filtered blog is equal to the original blog
@@ -27,9 +33,7 @@ router.get('/:id', (req, res) => {
     const id = Number(req.params.id)
 
     // Find the post with the id that be search
-    const specificPost = blog.find((thisPost) => {
-        return thisPost.id === id
-    })
+    specificPost = getFind(id)
 
     // Controll if the post exist
     if(!specificPost) {
@@ -45,6 +49,14 @@ router.get('/:id', (req, res) => {
 
     // Response whit the specific post
     res.json(specificPost)
+})
+
+// destroy
+router.delete('/:id', (req, res) => {
+    // Tranform to number the id of URL
+    const id = Number(req.params.id)
+
+
 })
 
 module.exports = router
