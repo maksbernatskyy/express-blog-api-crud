@@ -130,6 +130,7 @@ function update(req, res) {
   // Controll the blog
   console.log(blog)
 
+  // Response with the specific post
   res.json(specificPost)
 }
 
