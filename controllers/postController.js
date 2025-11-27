@@ -82,7 +82,7 @@ function destroy(req, res) {
 // store
 function store(req, res) {
   // New id
-  const newId = Date.now()
+  const newId = Date.now();
 
   // New object post
   const newPost = {
@@ -90,19 +90,48 @@ function store(req, res) {
     title: req.body.title,
     content: req.body.content,
     image: req.body.image,
-    tags: req.body.tags
-  }
+    tags: req.body.tags,
+  };
 
   // Add new post
-  blog.push(newPost)
+  blog.push(newPost);
 
   // Control
-  console.log(blog)
+  console.log(blog);
 
   // Response status and new post
-  res.status(201)
-  res.json(newPost)
+  res.status(201);
+  res.json(newPost);
+}
+
+// update
+function update(req, res) {
+  // Transform in number the URL
+  const id = Number(req.params.id);
+
+  // Find the post with the id that be search
+  const specificPost = getFind(id);
+
+  // Controll if the post exist
+  if(!specificPost) {
+
+    // Change the status
+    res.status(404)
+
+    return res.json({
+      error: "Not found",
+      message: "Post not find"
+    })
+  }
+
+  // Update the post
+  specificPost.title = req.body.title
+
+  // Controll the blog
+  console.log(blog)
+
+  res.json(specificPost)
 }
 
 // Export
-module.exports = { index, show, destroy, store };
+module.exports = { index, show, destroy, store, update };
