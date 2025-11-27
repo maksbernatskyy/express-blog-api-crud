@@ -79,5 +79,30 @@ function destroy(req, res) {
   res.sendStatus(204);
 }
 
+// store
+function store(req, res) {
+  // New id
+  const newId = Date.now()
+
+  // New object post
+  const newPost = {
+    id: newId,
+    title: req.body.title,
+    content: req.body.content,
+    image: req.body.image,
+    tags: req.body.tags
+  }
+
+  // Add new post
+  blog.push(newPost)
+
+  // Control
+  console.log(blog)
+
+  // Response status and new post
+  res.status(201)
+  res.json(newPost)
+}
+
 // Export
-module.exports = { index, show, destroy };
+module.exports = { index, show, destroy, store };

@@ -6,6 +6,12 @@ const postsRouter = require('./routers/posts')
 // Access to folder public
 app.use(express.static('public'))
 
+app.use(express.json())
+
+app.post("/", (req, res) => {
+    console.log(req.body)
+})
+
 app.get('/', (req, res) => {
     res.send('Server del mio blog')
 })
