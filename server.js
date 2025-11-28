@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const PORT = 3000
 const postsRouter = require('./routers/posts')
+const errorsHandler = require('./middlewares/errorsHandler')
 
 // Access to folder public
 app.use(express.static('public'))
@@ -23,4 +24,6 @@ app.use('/posts', postsRouter)
 app.listen(PORT, () => {
     console.log(`app listening on port: ${PORT}`)
 })
+
+app.use(errorsHandler)
 
